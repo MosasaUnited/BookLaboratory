@@ -13,4 +13,5 @@ class SplashViewBody extends StatelessWidget {
         Image.asset(AssetsData.logo),
       ],
     );
+  }
 }
