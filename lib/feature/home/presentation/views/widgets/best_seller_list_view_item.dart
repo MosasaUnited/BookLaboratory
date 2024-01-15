@@ -9,23 +9,26 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 125,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.5 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                image: const DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(
-                    AssetsData.bookOne,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Row(
+          children: [
+            AspectRatio(
+              aspectRatio: 2.5 / 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: const DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(
+                      AssetsData.bookOne,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
