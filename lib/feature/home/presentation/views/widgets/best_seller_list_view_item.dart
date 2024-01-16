@@ -1,6 +1,6 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-;
+
 import '../../../../../core/utils/assets.dart';
 import 'book_rating.dart';
 
