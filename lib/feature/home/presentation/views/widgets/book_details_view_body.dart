@@ -13,65 +13,70 @@ class BookDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 33.5),
-        child: Column(
-          children: [
-            const CustomBookDetailsAppBar(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * .17),
-              child: const CustomBookImage(),
-            ),
-            const SizedBox(
-              height: 18.5,
-            ),
-            const Text(
-              'Atomic Habits',
-              style: Styles.textStyle30,
-            ),
-            Opacity(
-              opacity: .7,
-              child: Text(
-                'James Clear',
-                style: Styles.textStyle18.copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 23.5,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 33.5),
+            child: Column(
               children: [
-                BookRating(),
+                const CustomBookDetailsAppBar(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .17),
+                  child: const CustomBookImage(),
+                ),
+                const SizedBox(
+                  height: 18.5,
+                ),
+                const Text(
+                  'Atomic Habits',
+                  style: Styles.textStyle30,
+                ),
+                Opacity(
+                  opacity: .7,
+                  child: Text(
+                    'James Clear',
+                    style: Styles.textStyle18.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 23.5,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BookRating(),
+                  ],
+                ),
+                const SizedBox(
+                  height: 37,
+                ),
+                const BooksAction(),
+                const Expanded(
+                  child: SizedBox(
+                    height: 50,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text('You can also like',
+                      style: Styles.textStyle18.copyWith(
+                        fontWeight: FontWeight.w600,
+                      )),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const SimilarBooksListView(),
               ],
             ),
-            const SizedBox(
-              height: 37,
-            ),
-            const BooksAction(),
-            const SizedBox(
-              height: 50,
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text('You can also like',
-                  style: Styles.textStyle18.copyWith(
-                    fontWeight: FontWeight.w600,
-                  )),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const SimilarBooksListView(),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
