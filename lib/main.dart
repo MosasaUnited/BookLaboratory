@@ -24,7 +24,7 @@ class BookLab extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+          )..fetchFetauredBooks(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
