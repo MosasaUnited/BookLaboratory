@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
+import '../../../data/models/book_model/book_model.dart';
 import 'book_rating.dart';
 import 'books_action.dart';
 import 'custom_book_item.dart';
 
 class BooksDetailsSection extends StatelessWidget {
-  const BooksDetailsSection({super.key});
+  const BooksDetailsSection({super.key, required this.booksModel});
+
+  final BooksModel booksModel;
 
   @override
   Widget build(BuildContext context) {
@@ -16,22 +19,22 @@ class BooksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .17),
-          child: const CustomBookImage(
-            image:
-                'http://books.google.com/books/content?id=lESCCXkdy3YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+          child: CustomBookImage(
+            image: booksModel.volumeInfo.imageLinks?.thumbnail ?? '',
           ),
         ),
         const SizedBox(
           height: 18.5,
         ),
-        const Text(
-          'Atomic Habits',
+        Text(
+          booksModel.volumeInfo.title!,
           style: Styles.textStyle30,
+          textAlign: TextAlign.center,
         ),
         Opacity(
           opacity: .7,
           child: Text(
-            'James Clear',
+            booksModel.volumeInfo.authors![0],
             style: Styles.textStyle18.copyWith(
               fontWeight: FontWeight.w900,
               fontStyle: FontStyle.italic,
@@ -41,12 +44,12 @@ class BooksDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 23.5,
         ),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BookRating(
-              rating: 5,
-              count: 250,
+              rating: booksModel.volumeInfo.averageRating ?? 0,
+              count: booksModel.volumeInfo.ratingsCount ?? 0,
             ),
           ],
         ),
